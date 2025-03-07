@@ -581,6 +581,9 @@
     </footer>
 
     <script>
+          if (window.location.pathname.endsWith('index.html')) {
+    window.history.replaceState({}, document.title, window.location.pathname.slice(0, -10));
+  }
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
