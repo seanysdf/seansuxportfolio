@@ -339,6 +339,51 @@
                 display: none;
             }
         }
+
+        .persona-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin: 32px 0;
+}
+
+.persona-grid-item {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.persona-grid-item .cs-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.persona-grid-item .cs-image:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.persona-grid-item .cs-caption {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 16px;
+}
+
+@media (max-width: 992px) {
+    .persona-grid-item {
+        max-width: 600px;
+    }
+}
+
+@media (max-width: 768px) {
+    .persona-grid-item {
+        max-width: 100%;
+    }
+}
     </style>
 </head>
 <body>
@@ -451,21 +496,22 @@
                     <p class="cs-caption">Research Documentation and Affinity Map</p>
                 </div>
                 
-                <h3>User Personas</h3>
-                <p>To ground our design decisions, we developed two key personas based on our research findings:</p>
-                
-                <div class="cs-image-container">
-                    <div class="image-grid">
-                        <div class="image-grid-item">
-                            <img src="figma exports/persona2.jpg" alt="Ella Mitchell Persona" class="cs-image">
-                            <p class="cs-caption">Ella Mitchell: College student, single parent of newborn</p>
-                        </div>
-                        <div class="image-grid-item">
-                            <img src="figma exports/persona1.jpg" alt="Grace Evans Persona" class="cs-image">
-                            <p class="cs-caption">Grace Evans: Co-parenting tweens</p>
-                        </div>
-                    </div>
-                </div>
+               <h3>User Personas</h3>
+<p>To ground our design decisions, we developed two key personas based on our research findings:</p>
+
+<!-- UPDATED: Changed from image-grid to persona-grid for larger images -->
+<div class="cs-image-container">
+    <div class="persona-grid">
+        <div class="persona-grid-item">
+            <img src="figma exports/persona2.jpg" alt="Ella Mitchell Persona" class="cs-image">
+            <p class="cs-caption">Ella Mitchell: College student, single parent of newborn</p>
+        </div>
+        <div class="persona-grid-item">
+            <img src="figma exports/persona1.jpg" alt="Grace Evans Persona" class="cs-image">
+            <p class="cs-caption">Grace Evans: Co-parenting tweens</p>
+        </div>
+    </div>
+</div>
                 
                 <p><strong>Ella Mitchell</strong> - College student, single parent of newborn</p>
                 <ul class="cs-list">
