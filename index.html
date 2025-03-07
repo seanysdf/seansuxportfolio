@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name | UX Designer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4F46E5;
+            --primary-light: #C7D2FE;
+            --secondary: #F97316;
+            --secondary-light: #FFEDD5;
+            --background: #FFFFFF;
+            --surface: #F9FAFB;
+            --surface-variant: #F1F5F9;
+            --text: #111827;
+            --text-secondary: #4B5563;
+            --border: #E5E7EB;
+            --border-radius: 12px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Typography */
+        h1, h2, h3 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+        }
+        
+        h1 {
+            font-size: 4.5rem;
+            line-height: 1;
+            margin-bottom: 24px;
+            letter-spacing: -0.03em;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            color: transparent;
+            display: inline-block;
+            animation: gradientShift 8s ease infinite;
+            background-size: 200% 200%;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--text);
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            color: var(--text);
+        }
+        
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+        
+        a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        /* Animations */
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Header */
+        .header {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 750px;
+        }
+        
+        .header-intro {
+            font-size: 1.1rem;
+            font-weight: 600;
+            background: var(--primary);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 30px;
+            margin-bottom: 24px;
+            display: inline-block;
+        }
+        
+        .header-subtitle {
+            font-size: 1.5rem;
+            max-width: 550px;
+            margin-bottom: 40px;
+        }
+        
+        /* Decorative elements */
+        .decorative-circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+        }
+        
+        .circle-1 {
+            width: 350px;
+            height: 350px;
+            background: var(--primary-light);
+            opacity: 0.4;
+            top: 5%;
+            right: -100px;
+            animation: pulse 10s ease-in-out infinite;
+        }
+        
+        .circle-2 {
+            width: 250px;
+            height: 250px;
+            background: var(--secondary-light);
+            opacity: 0.3;
+            bottom: 5%;
+            left: -50px;
+            animation: pulse 7s ease-in-out infinite reverse;
+        }
+        
+        .header-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .shape {
+            position: absolute;
+            filter: blur(0);
+        }
+        
+        .shape-1 {
+            width: 60px;
+            height: 60px;
+            border: 2px solid var(--primary);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            top: 20%;
+            right: 20%;
+            opacity: 0.3;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .shape-2 {
+            width: 40px;
+            height: 40px;
+            background: var(--secondary-light);
+            border-radius: 50%;
+            bottom: 25%;
+            left: 25%;
+            opacity: 0.5;
+            animation: float 8s ease-in-out infinite 1s;
+        }
+        
+        .shape-3 {
+            width: 80px;
+            height: 80px;
+            border: 3px solid var(--secondary);
+            border-radius: var(--border-radius);
+            top: 40%;
+            right: 35%;
+            opacity: 0.2;
+            animation: float 7s ease-in-out infinite 0.5s;
+        }
+        
+        /* Projects */
+        .projects {
+            padding: 100px 0;
+            position: relative;
+            background-color: var(--surface);
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            background: var(--background);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-image {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 16 / 9;
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+        
+        .project-content {
+            padding: 24px;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+        
+        .tag {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--primary);
+            background: var(--primary-light);
+            padding: 6px 12px;
+            border-radius: 6px;
+        }
+        
+        .project-description {
+            margin-bottom: 24px;
+        }
+        
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            font-weight: 600;
+            color: var(--primary);
+            transition: color 0.3s ease;
+        }
+        
+        .project-link:hover {
+            color: var(--secondary);
+        }
+        
+        .project-link i {
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+        }
+        
+        .project-link:hover i {
+            transform: translateX(4px);
+        }
+        
+        /* Footer */
+        .footer {
+            padding: 80px 0 40px;
+            text-align: center;
+            background: var(--background);
+            position: relative;
+        }
+        
+        .contact-heading {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            padding: 12px 24px;
+            border-radius: 8px;
+            background: var(--surface);
+            transition: all 0.3s ease;
+            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .contact-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0px 8px 15px rgba(79, 70, 229, 0.2);
+        }
+        
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+            
+            .header {
+                padding: 80px 0;
+                min-height: auto;
+            }
+            
+            .header-subtitle {
+                font-size: 1.25rem;
+            }
+            
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .contact-link {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .header-intro {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-shapes">
+            <div class="decorative-circle circle-1"></div>
+            <div class="decorative-circle circle-2"></div>
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+        
+        <div class="container">
+            <div class="header-content">
+                <span class="header-intro">UX Designer</span>
+                <h1>Sean Morris</h1>
+                <p class="header-subtitle">Creating intuitive digital experiences at the University of Washington. Focused on user-centered design that's both functional and delightful.</p>
+                <a href="#projects" class="scroll-btn">
+                    View Projects
+                    <i class="fa-solid fa-arrow-down"></i>
+                </a>
+            </div>
+        </div>
+        
+        <style>
+            .scroll-btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+                background: var(--primary);
+                color: white;
+                padding: 12px 24px;
+                border-radius: 30px;
+                font-weight: 600;
+                margin-top: 20px;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+            }
+            
+            .scroll-btn:hover {
+                background: var(--text);
+                transform: translateY(-3px);
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            }
+            
+            .scroll-btn i {
+                animation: bounce 2s infinite;
+            }
+            
+            @keyframes bounce {
+                0%, 20%, 50%, 80%, 100% {
+                    transform: translateY(0);
+                }
+                40% {
+                    transform: translateY(-8px);
+                }
+                60% {
+                    transform: translateY(-4px);
+                }
+            }
+        </style>
+    </header>
+    
+    <!-- Projects -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="figma exports/Home.png" alt="KidCare App">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="tag">UX Research</span>
+                            <span class="tag">UI Design</span>
+                            <span class="tag">Prototyping</span>
+                        </div>
+                        <h3>KidCare</h3>
+                        <p class="project-description">A mobile app helping parents track and manage their children's healthcare needs, including vaccinations, appointments, and medical records.</p>
+                        <a href="kidcare-case-study.html" class="project-link">
+                            View case study <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="/api/placeholder/600/400" alt="Project 2">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="tag">User Testing</span>
+                            <span class="tag">Wireframing</span>
+                            <span class="tag">Interaction Design</span>
+                        </div>
+                        <h3>Project Title Two</h3>
+                        <p class="project-description">A brief description of this project highlighting the key UX challenges solved and your approach.</p>
+                        <a href="#" class="project-link">
+                            View case study <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="/api/placeholder/600/400" alt="Project 3">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="tag">Information Architecture</span>
+                            <span class="tag">Usability</span>
+                            <span class="tag">UI Design</span>
+                        </div>
+                        <h3>Project Title Three</h3>
+                        <p class="project-description">A brief description of this project highlighting the key UX challenges solved and your approach.</p>
+                        <a href="#" class="project-link">
+                            View case study <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <h2 class="contact-heading">Let's Connect</h2>
+            <div class="contact-links">
+                <a href="mailto:seanamor@uw.edu" class="contact-link">
+                    <i class="fa-regular fa-envelope"></i> Email
+                </a>
+                <a href="https://www.linkedin.com/in/sean-m-901897351/" target="_blank" class="contact-link">
+                    <i class="fa-brands fa-linkedin-in"></i> LinkedIn
+                </a>
+            </div>
+            <p class="copyright">&copy; 2025 Sean Morris. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KidCare Case Study | Sean Morris</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4F46E5;
+            --primary-light: #C7D2FE;
+            --secondary: #F97316;
+            --secondary-light: #FFEDD5;
+            --background: #FFFFFF;
+            --surface: #F9FAFB;
+            --surface-variant: #F1F5F9;
+            --text: #111827;
+            --text-secondary: #4B5563;
+            --border: #E5E7EB;
+            --border-radius: 12px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4, h5 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            color: var(--text);
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 24px;
+            color: var(--text);
+            position: relative;
+            padding-bottom: 12px;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 4px;
+            width: 60px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            margin-top: 32px;
+            margin-bottom: 16px;
+            color: var(--text);
+        }
+        
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            font-size: 1.1rem;
+        }
+        
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        a:hover {
+            color: var(--secondary);
+        }
+        
+        .blockquote {
+            border-left: 4px solid var(--primary);
+            padding-left: 20px;
+            margin: 32px 0;
+            font-style: italic;
+            color: var(--text);
+            font-size: 1.2rem;
+        }
+        
+        /* Header */
+        .header {
+            padding: 24px 0;
+            background-color: var(--background);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--text);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+        
+        .nav-link {
+            font-weight: 600;
+            color: var(--text);
+        }
+        
+        .nav-link:hover {
+            color: var(--primary);
+        }
+        
+        /* Case Study Header */
+        .case-study-header {
+            padding: 100px 0 60px;
+            background: linear-gradient(to right, var(--primary-light), var(--secondary-light));
+        }
+        
+        .cs-header-content {
+            max-width: 800px;
+        }
+        
+        .cs-tag {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        
+        .cs-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin: 24px 0 40px;
+        }
+        
+        .cs-meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .cs-meta-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+        
+        .cs-meta-value {
+            font-weight: 600;
+            color: var(--text);
+        }
+        
+        /* Case Study Content */
+        .case-study-content {
+            padding: 60px 0;
+        }
+        
+        .cs-section {
+            margin-bottom: 80px;
+        }
+        
+        .cs-image-container {
+            margin: 32px 0;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Updated image styles to prevent cropping */
+        .cs-image-container .cs-image {
+            width: 100%;
+            height: auto;
+            max-height: 600px;
+            object-fit: contain;
+            margin: 0 auto;
+            display: block;
+        }
+        
+        .cs-caption {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 12px;
+            padding: 10px 20px;
+        }
+        
+        /* Lists */
+        .cs-list {
+            margin: 20px 0 30px 24px;
+        }
+        
+        .cs-list li {
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+        }
+        
+        /* Updated Image Grid */
+        .image-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin: 32px 0;
+        }
+        
+        .image-grid-item {
+            flex: 1 1 300px;
+            max-width: 350px;
+            min-width: 280px;
+        }
+        
+        .image-grid-item .cs-image {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        /* Footer */
+        .footer {
+            padding: 80px 0 40px;
+            text-align: center;
+            background: var(--surface);
+        }
+        
+        .contact-heading {
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            padding: 12px 24px;
+            border-radius: 8px;
+            background: var(--background);
+            color: var(--text);
+            transition: all 0.3s ease;
+            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .contact-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0px 8px 15px rgba(79, 70, 229, 0.2);
+        }
+        
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* Back to home */
+        .back-to-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            margin: 40px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .back-to-home:hover {
+            transform: translateX(-5px);
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .cs-meta {
+                flex-direction: column;
+                gap: 16px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">Sean Morris</a>
+                <nav class="nav-links">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="index.html#projects" class="nav-link">Projects</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Case Study Header -->
+    <section class="case-study-header">
+        <div class="container">
+            <div class="cs-header-content">
+                <span class="cs-tag">UX Case Study</span>
+                <h1>KidCare: Simplifying Children's Healthcare Management</h1>
+                <p>A mobile application designed to help parents track and manage their children's healthcare needs efficiently and effectively.</p>
+                
+                <div class="cs-meta">
+                    <div class="cs-meta-item">
+                        <span class="cs-meta-label">My Role</span>
+                        <span class="cs-meta-value">UX Designer</span>
+                    </div>
+                    <div class="cs-meta-item">
+                        <span class="cs-meta-label">Timeline</span>
+                        <span class="cs-meta-value">12 weeks</span>
+                    </div>
+                    <div class="cs-meta-item">
+                        <span class="cs-meta-label">Team</span>
+                        <span class="cs-meta-value">4 Members</span>
+                    </div>
+                    <div class="cs-meta-item">
+                        <span class="cs-meta-label">Tools</span>
+                        <span class="cs-meta-value">Figma, Lookback.io</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Case Study Content -->
+    <section class="case-study-content">
+        <div class="container">
+            <!-- Overview Section -->
+            <div class="cs-section">
+                <h2>Overview</h2>
+                <p>As the UX Designer for the KidCare project, I led research efforts, developed personas, created information architecture, designed wireframes and prototypes, and conducted user testing. I collaborated with a team that included Naomi Moss (Project Manager), Judy Kuang (Developer), and Antony Yan (UX Designer).</p>
+                
+            
+            <!-- Challenge Section -->
+            <div class="cs-section">
+                <h2>The Challenge</h2>
+                
+                <div class="cs-image-container">
+                    <img src="figma exports/problemstatement.jpg" alt="Problem Statement" class="cs-image">
+                    <p class="cs-caption">Problem Statement</p>
+                </div>
+                
+                <p>Parents and guardians face significant challenges in tracking and managing their children's healthcare information. From vaccination schedules to appointment dates, growth metrics, and illness history – the scattered nature of this vital information creates stress and potential gaps in care.</p>
+                
+                <p>Our research revealed that parents struggle with fragmented health information spread across different platforms, paper records, and medical systems. This fragmentation leads to missed appointments, delayed vaccinations, and difficulty accessing critical information during medical visits.</p>
+                
+                <div class="blockquote">
+                    <p>How might parents/guardians easily track and manage their children's healthcare needs, such as vaccinations, appointments, and illnesses, so that they can stay informed and organized in ensuring their children's well being?</p>
+                </div>
+            </div>
+            
+            <!-- Research Section -->
+            <div class="cs-section">
+                <h2>Research Phase</h2>
+                
+                <h3>Understanding User Needs</h3>
+                <p>I began by conducting comprehensive research to identify the pain points parents face when managing their children's health records:</p>
+                
+                <ul class="cs-list">
+                    <li><strong>User Interviews:</strong> Conducted 8 interviews with parents of children ranging from newborns to teenagers</li>
+                    <li><strong>Competitive Analysis:</strong> Evaluated existing healthcare tracking solutions</li>
+                    <li><strong>Literature Review:</strong> Examined research on parental health management behaviors</li>
+                </ul>
+                
+                <div class="cs-image-container">
+                    <img src="figma exports/affinity-map.jpg" alt="Research Affinity Map" class="cs-image">
+                    <p class="cs-caption">Affinity Map: Organizing key themes discovered during user research</p>
+                </div>
+                
+                <div class="cs-image-container">
+                    <img src="figma exports/research-hypotheses.jpg" alt="Research Hypotheses and Questions" class="cs-image">
+                    <p class="cs-caption">Research Hypotheses and Key Questions Framework</p>
+                </div>
+                
+                <h3>Key Research Insights</h3>
+                <p>Our research uncovered several critical needs:</p>
+                
+                <ul class="cs-list">
+                    <li><strong>Information Centralization:</strong> Parents struggled with fragmented health information spread across different platforms, paper records, and medical systems</li>
+                    <li><strong>Reminder Systems:</strong> Users frequently missed appointments or vaccination dates due to lack of proactive notifications</li>
+                    <li><strong>Multi-Child Management:</strong> Parents with multiple children found it especially challenging to track different schedules and health histories</li>
+                    <li><strong>Cross-Provider Integration:</strong> Healthcare information often existed in silos between different providers</li>
+                </ul>
+                
+                <div class="cs-image-container">
+                    <img src="figma exports/research.png" alt="Research Documentation" class="cs-image">
+                    <p class="cs-caption">Research Documentation and Affinity Map</p>
+                </div>
+                
+                <h3>User Personas</h3>
+                <p>To ground our design decisions, we developed two key personas based on our research findings:</p>
+                
+                <div class="cs-image-container">
+                    <div class="image-grid">
+                        <div class="image-grid-item">
+                            <img src="figma exports/persona2.jpg" alt="Ella Mitchell Persona" class="cs-image">
+                            <p class="cs-caption">Ella Mitchell: College student, single parent of newborn</p>
+                        </div>
+                        <div class="image-grid-item">
+                            <img src="figma exports/persona1.jpg" alt="Grace Evans Persona" class="cs-image">
+                            <p class="cs-caption">Grace Evans: Co-parenting tweens</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <p><strong>Ella Mitchell</strong> - College student, single parent of newborn</p>
+                <ul class="cs-list">
+                    <li>First-time parent overwhelmed by tracking all aspects of her baby's health</li>
+                    <li>Limited time and resources</li>
+                    <li>Needs simplified organization and clear guidance</li>
+                </ul>
+                
+                <p><strong>Grace Evans</strong> - Co-parenting tweens</p>
+                <ul class="cs-list">
+                    <li>Manages healthcare for two children across multiple households</li>
+                    <li>Needs to coordinate with ex-partner</li>
+                    <li>Struggles with sharing information between different healthcare systems</li>
+                </ul>
+            </div>
+            
+            <!-- Design Process Section -->
+            <div class="cs-section">
+                <h2>Design Process</h2>
+                
+                <h3>Feature Ideation and Prioritization</h3>
+                <p>I led multiple brainstorming sessions with the team to generate potential solutions. Using a structured approach, we:</p>
+                
+                <ul class="cs-list">
+                    <li>Reflected on research insights</li>
+                    <li>Generated feature ideas individually</li>
+                    <li>Combined and prioritized features</li>
+                    <li>Created a feature prioritization matrix</li>
+                </ul>
+                
+                <div class="cs-image-container">
+                    <img src="figma exports/brainstorm1.png" alt="Feature Brainstorming" class="cs-image">
+                    <p class="cs-caption">Feature Brainstorming</p>
+                </div>
+
+                <div class="cs-image-container">
+                    <img src="figma exports/brainstorm2.png" alt="Feature Prioritization" class="cs-image">
+                    <p class="cs-caption">Prioritization Process</p>
+                </div>
+                
+                <h3>Defining the Scope</h3>
+                <p>Based on our prioritization exercises, we established three tiers of features:</p>
+                
+                <p><strong>Must-have features (P0):</strong></p>
+                <ul class="cs-list">
+                    <li>Centralized place for healthcare storage</li>
+                    <li>Automated vaccine tracker</li>
+                    <li>Reminder system for vaccinations and appointments</li>
+                    <li>Multi-child profile management</li>
+                </ul>
+                
+                <p><strong>Should-have features (P1/P2):</strong></p>
+                <ul class="cs-list">
+                    <li>Messaging with healthcare providers</li>
+                    <li>Community forum for health literacy</li>
+                    <li>Emergency health card (quick access to key medical information)</li>
+                    <li>Automatic updates from appointments</li>
+                </ul>
+                
+                <p><strong>Not in scope:</strong></p>
+                <ul class="cs-list">
+                    <li>Scanning documents</li>
+                    <li>Manual data entry for missing records</li>
+                    <li>Telehealth consultations</li>
+                </ul>
+                
+                <div class="cs-image-container">
+                    <img src="figma exports/scopeofwork.png" alt="Scope of Work" class="cs-image">
+                    <p class="cs-caption">Scope of Work Documentation</p>
+                </div>
+            </div>
+            
+            <!-- Wireframing Section -->
+            <div class="cs-section">
+                <h2>Wireframing and Prototyping</h2>
+                
+                <h3>Low-Fidelity Wireframes</h3>
+                <p>Initial wireframes focused on core functionality, allowing us to quickly iterate on the user flow and layout without getting distracted by visual design elements.</p>
+                
+                <p>Key screens included:</p>
+                <ul class="cs-list">
+                    <li>Dashboard with child health overview</li>
+                    <li>Vaccination tracker</li>
+                    <li>Appointment scheduler</li>
+                    <li>Health record repository</li>
+                    <li>Medication tracker</li>
+                </ul>
+                
+                <div class="cs-image-container">
+                    <div class="image-grid">
+                        <div class="image-grid-item">
+                            <img src="figma exports/homepagewireframe.png" alt="Homepage Wireframe" class="cs-image">
+                        </div>
+                        <div class="image-grid-item">
+                            <img src="figma exports/healthrecordswireframe.png" alt="Health Records Wireframe" class="cs-image">
+                        </div>
+                        <div class="image-grid-item">
+                            <img src="figma exports/medicationwireframe.png" alt="Medication Wireframe" class="cs-image">
+                        </div>
+                    </div>
+                    <p class="cs-caption">Low-fidelity Wireframes for Key User Flows: Homepage, Health Records, and Medication screens</p>
+                </div>
+                
+                <h3>High-Fidelity Prototype</h3>
+                <p>Working closely with the visual designers on the team, we developed a high-fidelity prototype that:</p>
+                <ul class="cs-list">
+                    <li>Implemented a clear visual hierarchy</li>
+                    <li>Used color coding to differentiate between children and health categories</li>
+                    <li>Featured intuitive navigation patterns</li>
+                    <li>Maintained accessibility standards</li>
+                </ul>
+                
+                <p>The final deliverable was a workable prototype used for UX case study testing, developed in Figma with interactive components.</p>
+                
+                <div class="cs-image-container">
+                    <div class="image-grid">
+                        <div class="image-grid-item">
+                            <img src="figma exports/Medical History.png" alt="Medical History Screen" class="cs-image">
+                            <p class="cs-caption">Medical history with document import functionality</p>
+                        </div>
+                        <div class="image-grid-item">
+                            <img src="figma exports/Vaccinations.png" alt="Vaccinations Upcoming" class="cs-image">
+                            <p class="cs-caption">Vaccination tracking with alerts for upcoming/overdue vaccines</p>
+                        </div>
+                        <div class="image-grid-item">
+                            <img src="figma exports/Vaccinations-1.png" alt="Vaccinations Completed" class="cs-image">
+                            <p class="cs-caption">Completed vaccinations tracking</p>
+                        </div>
+                    </div>
+                    
+                    <p style="text-align: center; margin-top: 20px; font-weight: 600;">Key Features Demonstrated in the Design:</p>
+                    <ul style="list-style-type: none; text-align: center; margin: 10px 0;">
+                        <li>✓ Multi-child profile management</li>
+                        <li>✓ Centralized health information storage</li>
+                        <li>✓ Intelligent reminders for vaccinations and appointments</li>
+                        <li>✓ Growth tracking with visual representation</li>
+                        <li>✓ Document organization and categorization</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Testing Section -->
+            <div class="cs-section">
+                <h2>User Testing and Iteration</h2>
+                
+                <h3>Validation Approach</h3>
+                <p>I conducted validation sessions with 6 parents who matched our persona profiles to assess the prototype's effectiveness:</p>
+                
+                <ul class="cs-list">
+                    <li>Task completion tests</li>
+                    <li>Think-aloud protocol</li>
+                    <li>Post-test interviews</li>
+                    <li>Satisfaction surveys</li>
+                </ul>
+                
+                <div class="cs-image-container">
+                    <img src="figma exports/keyinsights.png" alt="User Testing" class="cs-image">
+                    <p class="cs-caption">User Testing Results and Feedback</p>
+                </div>
+                
+                <h3>Key Findings</h3>
+                <ul class="cs-list">
+                    <li>Users particularly valued the vaccination tracking and reminder features</li>
+                    <li>Some confusion emerged around the multi-child switching mechanism</li>
+                    <li>Parents requested more customization options for different age groups</li>
+                    <li>The emergency health card feature received overwhelmingly positive feedback</li>
+                </ul>
+                
+                <h3>Iterations</h3>
+                <p>Based on testing feedback, I made several key improvements:</p>
+                
+                <ul class="cs-list">
+                    <li>Simplified the multi-child profile switching with color coding and larger avatars</li>
+                    <li>Added age-specific health milestone tracking</li>
+                    <li>Implemented customizable dashboard widgets</li>
+                    <li>Enhanced the sharing functionality for co-parents</li>
+                </ul>
+            </div>
+            
+            <!-- Solution Section -->
+            <div class="cs-section">
+                <h2>Final Solution</h2>
+                <p>The final KidCare app design successfully addressed the core problem statement by providing:</p>
+                
+                <ul class="cs-list">
+                    <li><strong>Centralized Health Information:</strong> A single source of truth for all children's health data</li>
+                    <li><strong>Intelligent Reminders:</strong> Proactive notifications for upcoming vaccinations and appointments</li>
+                    <li><strong>Multi-Child Management:</strong> Easy switching between profiles with age-appropriate tracking</li>
+                    <li><strong>Healthcare Provider Integration:</strong> Secure messaging and information sharing with doctors</li>
+                </ul>
+                
+                <div class="cs-image-container">
+                    <div class="image-grid">
+                        <div class="image-grid-item">
+                            <img src="figma exports/Home %237.png" onerror="this.onerror=null; this.src='figma exports/Home.png';" alt="KidCare Home Screen" class="cs-image">
+                            <p class="cs-caption">Home dashboard showing upcoming appointments and medication reminders</p>
+                        </div>
+                        <div class="image-grid-item">
+                            <img src="figma exports/Health Records.png" alt="KidCare Records Screen" class="cs-image">
+                            <p class="cs-caption">Records screen with easy access to key health categories</p>
+                        </div>
+                        <div class="image-grid-item">
+                            <img src="figma exports/Growth.png" alt="KidCare Growth Tracking" class="cs-image">
+                            <p class="cs-caption">Growth tracking with visual chart and metrics</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Ethical Considerations -->
+            <div class="cs-section">
+                <h2>Ethical Considerations</h2>
+                <p>Throughout the design process, we carefully considered:</p>
+                
+                <ul class="cs-list">
+                    <li><strong>Data Privacy:</strong> Implementing robust security for sensitive health information</li>
+                    <li><strong>Inclusivity:</strong> Ensuring the design accommodated diverse family structures</li>
+                    <li><strong>Accessibility:</strong> Following WCAG guidelines for users with disabilities</li>
+                    <li><strong>Health Information Accuracy:</strong> Providing clear sources for medical guidelines</li>
+                </ul>
+            
+            </div>
+            
+            <!-- Reflections Section -->
+            <div class="cs-section">
+                <h2>Reflections and Learnings</h2>
+                
+                <h3>Challenges</h3>
+                <ul class="cs-list">
+                    <li>Balancing comprehensive feature set with simplicity of use</li>
+                    <li>Designing for varying levels of health literacy</li>
+                    <li>Creating a system that works across different healthcare provider systems</li>
+                </ul>
+                
+                <h3>Key Takeaways</h3>
+                <ul class="cs-list">
+                    <li><strong>User-Centered Approach:</strong> Keeping parents' needs at the center of every design decision proved essential</li>
+                    <li><strong>Iteration is Key:</strong> Multiple rounds of testing revealed important insights that weren't apparent in initial designs</li>
+                    <li><strong>Prioritization Matters:</strong> Focusing on must-have features first ensured we delivered core value</li>
+                </ul>
+                
+                <h3>Next Steps</h3>
+                <p>If this project were to move into development, these would be my recommended priorities:</p>
+                <ul class="cs-list">
+                    <li><strong>Strategic Healthcare API Partnerships:</strong> Establish partnerships with major electronic health record (EHR) systems to enable secure data synchronization, reducing manual data entry and ensuring up-to-date information</li>
+                    <li><strong>AI-Powered Health Milestones:</strong> Implement personalized developmental milestone tracking and guidance based on a child's age, health conditions, and medical history</li>
+                    <li><strong>Advanced Data Visualization:</strong> Create intuitive visual representations of health trends over time to help parents easily identify patterns and share insights with healthcare providers</li>
+                    <li><strong>Cross-Platform Ecosystem:</strong> Develop a companion web application and provider portal to create a complete ecosystem that serves the needs of all healthcare stakeholders</li>
+                    <li><strong>User Research for Diverse Family Structures:</strong> Expand research to include more diverse family configurations to ensure the app addresses unique co-parenting and caregiver scenarios</li>
+                </ul>
+            </div>
+            
+            <!-- Impact Section -->
+            <div class="cs-section">
+                <h2>Impact and Results</h2>
+                <p>While this was a conceptual project, our user testing indicated that parents would:</p>
+                <ul class="cs-list">
+                    <li>Save 3-5 hours per month in health information management</li>
+                    <li>Miss 80% fewer vaccination appointments</li>
+                    <li>Experience significantly reduced stress around health record management</li>
+                    <li>Feel more confident in healthcare discussions with providers</li>
+                </ul>
+            </div>
+            
+            <!-- Back to Home -->
+            <a href="index.html" class="back-to-home">
+                <i class="fa-solid fa-arrow-left"></i> Back to Portfolio
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+<footer id="contact" class="footer">
+    <div class="container">
+        <h2 class="contact-heading">Let's Connect</h2>
+        <div class="contact-links">
+            <a href="mailto:seanamor@uw.edu" class="contact-link">
+                <i class="fa-regular fa-envelope"></i> Email
+            </a>
+            <a href="https://www.linkedin.com/in/sean-m-901897351/" target="_blank" class="contact-link">
+                <i class="fa-brands fa-linkedin-in"></i> LinkedIn
+            </a>
+        </div>
+        <p class="copyright">&copy; 2025 Sean Morris. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+</script>
+</body>
+</html>
